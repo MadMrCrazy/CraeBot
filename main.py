@@ -10,7 +10,7 @@ sendmsg = crae.send_message
 
 async def playStatus():
     await crae.wait_until_ready()
-    await crae.change_presence(game=discord.Game(name='With Shadows'))
+    await crae.change_presence(game=discord.Game(name='With the Debugger'))
 
 @subroutine
 async def on_ready():
@@ -28,9 +28,17 @@ async def on_message(message):
         await sendmsg(message.channel, "Test successful")
 
     elif message.content.startswith("Riley unfinished"):
-        unfinished = discord.utils.get(discord.Server.roles, name="unfinished")
+        unfinished = discord.utils.get(Server.roles, name="unfinished")
         await crae.add_roles(message.author, unfinished)
         await sendmsg(message.channel, "Role added!")
+
+    elif message.content.startswith("Riley?"):
+        await sendmsg(message.channel, "Yeah?")
+
+    elif message.content.startswith("Hello"):
+        if crae.user.id != message.author.id:
+            await sendmsg(message.channel, "Hello " + str(discord.User.name) +"!")
+            
 crae.loop.create_task(playStatus())
 token = ""
 crae.run(token)
