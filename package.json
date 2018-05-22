@@ -1,0 +1,10 @@
+// package.json
+...
+
+"dependencies": {
+
+"discord.py": "Rapptz/discord.py",
+
+}
+
+....
