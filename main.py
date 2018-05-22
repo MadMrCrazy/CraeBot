@@ -38,7 +38,6 @@ async def on_message(message):
     elif message.content.startswith("Hello"):
         if crae.user.id != message.author.id:
             await sendmsg(message.channel, "Hello " + str(discord.User.name) +"!")
+            print("said Hello to " + str(discord.User.name))
             
 crae.loop.create_task(playStatus())
-token = ""
-crae.run(token)
