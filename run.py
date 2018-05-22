@@ -1,5 +1,5 @@
 print("Running discord bot")
-token = "<insert token>"
+token = "token input"
 import main
-crae = crae.crae()
-crae.run(token)
+bot = main.crae
+bot.run(token)
