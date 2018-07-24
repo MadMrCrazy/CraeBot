@@ -20,17 +20,9 @@ async def on_ready():
 
 @subroutine
 async def on_message(message):
-    if message.content.startswith("Riley I'm finished"):
-        await sendmsg(message.channel, "Command incomplete.. Please wait for next update")
-        await crae.remove_roles(message.author, unfinished)
 
-    elif message.content.startswith("!test"):
+    if message.content.startswith("!test"):
         await sendmsg(message.channel, "Test successful")
-
-    elif message.content.startswith("Riley unfinished"):
-        unfinished = discord.utils.get(Server.roles, name="unfinished")
-        await crae.add_roles(message.author, unfinished)
-        await sendmsg(message.channel, "Role added!")
 
     elif message.content.startswith("Riley?"):
         await sendmsg(message.channel, "Yeah?")
