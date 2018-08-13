@@ -7,6 +7,7 @@ print("Launching CraeBot v0.2")
 crae = discord.Client()
 subroutine = crae.event
 sendmsg = crae.send_message
+extLog = discord.Object(id="478587171373056000")
 
 async def playStatus():
     await crae.wait_until_ready()
@@ -27,7 +28,14 @@ async def on_message(message):
     elif message.content.startswith("Riley?"):
         await sendmsg(message.channel, "Yeah?")
 
-    elif len(message.mentions) > 0:
+    elif message.content.lower().find("log this") != -1:
+        if  "external-log-requests" != str(message.channel):
+            print("Logged message from " + message.author.display_name)
+            print(message.content)
+            await sendmsg(extLog, message.content + " - " + message.author.display_name)
+            print(str(message.channel) + " to " + str(extLog))
+
+    '''elif len(message.mentions) > 0:
         print(message.mentions)
         wheremention = message.mentions.index(str(crae.user.id))
         print("detected mention")
@@ -37,8 +45,12 @@ async def on_message(message):
                 print("Message Author: " + str(message.author.display_name))
                 print(message.content)
             else:
-                print("No mention of me")
-        
+                print("No mention of me")'''
+                
+    elif message.content.lower().find("hello there") != -1:
+        if crae.user.id != message.author.id:
+            await sendmsg(message.channel, "General " + str(message.author.display_name) +"!")
+            print("Called " + str(message.author.display_name)+ " a general")        
 
     elif message.content.lower().find("hello") != -1:
         if crae.user.id != message.author.id:
