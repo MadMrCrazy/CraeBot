@@ -27,7 +27,20 @@ async def on_message(message):
     elif message.content.startswith("Riley?"):
         await sendmsg(message.channel, "Yeah?")
 
-    elif message.content.startswith("Hello"):
+    elif len(message.mentions) > 0:
+        print(message.mentions)
+        wheremention = message.mentions.index(str(crae.user.id))
+        print("detected mention")
+        for user in message.mentions:
+            if message.mentions(wheremention) == crae.user.id:
+                print("-----")
+                print("Message Author: " + str(message.author.display_name))
+                print(message.content)
+            else:
+                print("No mention of me")
+        
+
+    elif message.content.lower()== "hello":
         if crae.user.id != message.author.id:
             await sendmsg(message.channel, "Hello " + str(message.author.display_name) +"!")
             print("Said hello to " + str(message.author.display_name))
