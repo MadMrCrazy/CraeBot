@@ -40,7 +40,7 @@ async def on_message(message):
                 print("No mention of me")
         
 
-    elif message.content.lower()== "hello":
+    elif message.content.lower().find("hello") != -1:
         if crae.user.id != message.author.id:
             await sendmsg(message.channel, "Hello " + str(message.author.display_name) +"!")
             print("Said hello to " + str(message.author.display_name))
