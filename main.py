@@ -34,6 +34,12 @@ async def on_message(message):
             print(message.content)
             await sendmsg(extLog, message.content + " - " + message.author.display_name)
             print(str(message.channel) + " to " + str(extLog))
+            #   The idea here is for the server to have a channel dedicated to logging
+            #   That the bot will push to, which can be handy for logging if something happened
+            #   in the server, or to write a note. At the moment, it just logs the message
+            #   To a channel on the bot log server, which is where the bot reports crashes and feedback.
+            #   Which is where I plan to log the messages, if the server hasn't set it up for themselves.
+            #   That is for future plans though.
 
     '''elif len(message.mentions) > 0:
         print(message.mentions)
